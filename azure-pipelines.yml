@@ -52,5 +52,5 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    targetPath: AutomationPracticeWebPage/results/a11y-results/*.html
+    targetPath: AutomationPracticeWebPage/results/a11y-results/
     artifact: 'Accessibility Test Results'
