@@ -13,7 +13,7 @@ The results are stored in individual csv files. Python pandas library is used to
 
 ### Running the A11y Tests
 Follow the below steps:
-1.	Clone the project https://aquagem@dev.azure.com/aquagem/WebdriverIOA11y/_git/WebdriverIOA11y
+1.	Clone the project https://github.com/gmaroli/wdio-a11y-python.git
 2.	Install dependencies using npm install in the terminal.
 3.	Execute npm test to run the test
 
