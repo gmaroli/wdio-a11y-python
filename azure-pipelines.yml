@@ -10,13 +10,15 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-- group: AutomationTestVars
+- group: auto-variable-group
 
 steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
+
+- script: echo $(SERVER)
 
 - script: |
     npm ci
