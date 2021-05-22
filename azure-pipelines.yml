@@ -1,0 +1,53 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm ci
+  displayName: 'npm install dependencies'
+  workingDirectory: AutomationPracticeWebPage
+
+- script: 
+    npm test
+  displayName: 'execute test'
+  workingDirectory: AutomationPracticeWebPage
+  continueOnError: true
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results '
+  inputs:
+    testResultsFiles: '**/results/junit-results/*.xml'
+    mergeTestResults: true
+    testRunTitle: 'Regression_$(Build.BuildNumber)'
+  condition: succeededOrFailed()
+
+- task: UsePythonVersion@0
+  displayName: 'Use Python 3.9'
+  inputs:
+    versionSpec: 3.9
+
+- script: |
+   python -m pip install --upgrade pip setuptools wheel
+   pip install -r requirements.txt
+   python create_a11y_reports.py
+  workingDirectory: PythonA11yResults
+  displayName: 'Python Report'
+
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Pipeline Artifact'
+  inputs:
+    targetPath: AutomationPracticeWebPage/results/a11y-results/*.html
+    artifact: 'Accessibility Test Results'
