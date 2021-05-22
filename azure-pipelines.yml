@@ -52,7 +52,13 @@ steps:
   displayName: 'Python Report'
 
 - task: PublishPipelineArtifact@1
-  displayName: 'Publish Pipeline Artifact'
+  displayName: 'Publish A11y test results'
   inputs:
     targetPath: AutomationPracticeWebPage/results/a11y-results/
     artifact: 'Accessibility Test Results'
+  
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Failed tests screenshots'
+  inputs:
+    targetPath: AutomationPracticeWebPage/screenshots/failedTests/
+    artifact: 'Failed Tests Screenshots'
