@@ -18,7 +18,7 @@ steps:
     versionSpec: '14.x'
   displayName: 'Install Node.js'
 
-- script: echo $(SERVER)
+- script: echo $(dev)
 
 - script: |
     npm ci
