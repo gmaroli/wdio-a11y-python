@@ -41,13 +41,15 @@ Follow the below steps:
 #### A11y_PageDetailedReport.html
 
 Result file have the following details:
-Description of the issue
-Impact: Critical, Serious, Medium or low
-HTML: The component that has the issue
-Failure Summary: details of failure
-Id: type of element(button, link)
-Help
-HelpUrl: Url to the issue which will give what the issue was and how it can be fixed
+```
+1. Description of the issue
+2. Impact: Critical, Serious, Medium or low
+3. HTML: The component that has the issue
+4. Failure Summary: details of failure
+5. Id: type of element(button, link)
+6. Help
+7. HelpUrl: Url to the issue which will give what the issue was and how it can be fixed
+```
 
 #### A11yResults.html
 
